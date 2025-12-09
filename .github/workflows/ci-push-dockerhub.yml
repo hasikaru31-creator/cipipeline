@@ -76,4 +76,5 @@ jobs:
             docker pull ${{ env.IMAGE_NAME }}:latest
             docker stop flask-hello || true
             docker rm flask-hello || true
-            docker run -d --name flask-hello -p 80:5000 ${{ env.IMAGE_NAME }}:latest
+            
+            docker run -d --name flask-hello --restart unless-stopped -p 80:5000 ${{ env.IMAGE_NAME }}:latest
